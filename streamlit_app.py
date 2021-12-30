@@ -17,44 +17,44 @@ st.set_page_config(
     layout='wide',
 )
 
+st.markdown('Moved to: [https://huggingface.co/spaces/dpc/nmt](https://huggingface.co/spaces/dpc/nmt)')
+# with st.container():
+#     st.markdown('## 📑 Machine Translation')
+#     st.write('Using EasyNMT and opus-mt model.')
 
-with st.container():
-    st.markdown('## 📑 Machine Translation')
-    st.write('Using EasyNMT and opus-mt model.')
+# lang_list = model.get_languages()
 
-lang_list = model.get_languages()
+# b_size = st.slider('Translation quality (Beam size)', 1, 10, 5)
 
-b_size = st.slider('Translation quality (Beam size)', 1, 10, 5)
+# text = ''
+# submit = ''
+# target_langs = ''
 
-text = ''
-submit = ''
-target_langs = ''
+# with st.form(key='nmt'):
+#     text = st.text_area(
+#         label='Enter text',
+#         placeholder='Enter a sentence. Pāḷi translation is not available now.',
+#         help='Auto detect input language 170+.')
+#     target_langs = st.multiselect(
+#         'Translate to (can select more than one language)',
+#         lang_list,
+#         ['en', 'vi'])
+#     submit = st.form_submit_button(label='Translate')
 
-with st.form(key='nmt'):
-    text = st.text_area(
-        label='Enter text',
-        placeholder='Enter a sentence. Pāḷi translation is not available now.',
-        help='Auto detect input language 170+.')
-    target_langs = st.multiselect(
-        'Translate to (can select more than one language)',
-        lang_list,
-        ['en', 'vi'])
-    submit = st.form_submit_button(label='Translate')
+# if submit and text:
+#     detected_lang = model.language_detection(text)
 
-if submit and text:
-    detected_lang = model.language_detection(text)
+#     st.write('Dectected input language: ' + detected_lang)
 
-    st.write('Dectected input language: ' + detected_lang)
+#     if not target_langs:
+#         st.error('Please choose at least 1 target language.')
+#         st.stop()
 
-    if not target_langs:
-        st.error('Please choose at least 1 target language.')
-        st.stop()
+#     for lang in target_langs:
+#         try:
+#             res = model.translate(text, target_lang=lang, beam_size=b_size)
+#             if res:
+#                 st.success(lang + ' => ' + res)
 
-    for lang in target_langs:
-        try:
-            res = model.translate(text, target_lang=lang, beam_size=b_size)
-            if res:
-                st.success(lang + ' => ' + res)
-
-        except Exception as e:
-            st.write(e)
+#         except Exception as e:
+#             st.write(e)
