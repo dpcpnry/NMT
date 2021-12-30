@@ -3,8 +3,8 @@
 '''
 
 import streamlit as st
-from easynmt import EasyNMT
-model = EasyNMT('opus-mt')
+# from easynmt import EasyNMT
+# model = EasyNMT('opus-mt')
 
 
 # ---------- streamlit ----------
